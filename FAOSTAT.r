@@ -2,7 +2,6 @@ library(jsonlite)
 library(readr)
 library(httr)
 get_fao <- function(database_name,areas,elements,items,years) {
-	#database_name = "RL"
 	if (length(areas)>1) {areas = paste0(areas, collapse='%2C')}
 	if (length(elements)>1) {elements = paste0(elements, collape='%2C')}
 	if (length(items)>1) {items = paste0(items, collape='%2C')}
@@ -18,7 +17,6 @@ get_fao <- function(database_name,areas,elements,items,years) {
 database_name="OA"
 data <- fromJSON("https://fenixservices.fao.org/faostat/api/v1/en/definitions/types/area?datasource=DB4",flatten=TRUE)
 areas <- as.list(as.data.frame(data$data)$'Country Code')
-#areas = c(10)	
 elements=c(511) #Total population - both sexes
 items=c(3010) #Population
 years=c(1990:2021)
